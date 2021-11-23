@@ -596,6 +596,7 @@ type MessageCreateReqBody struct {
 	ReceiveId       string   `json:"receive_id,omitempty"`
 	Content         string   `json:"content,omitempty"`
 	MsgType         string   `json:"msg_type,omitempty"`
+	UpdateMulti     bool     `json:"update_multi,omitempty"`
 	ForceSendFields []string `json:"-"`
 }
 
