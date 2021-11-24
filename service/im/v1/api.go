@@ -830,7 +830,7 @@ func (rc *MessageCreateV4ReqCall) Do() (*Message, error) {
 	return result, err
 }
 
-func (messages *MessageService) Create(ctx *core.Context, body *MessageCreateV4ReqBody, optFns ...request.OptFn) *MessageCreateV4ReqCall {
+func (messages *MessageService) CreateV4(ctx *core.Context, body *MessageCreateV4ReqBody, optFns ...request.OptFn) *MessageCreateV4ReqCall {
 	return &MessageCreateV4ReqCall{
 		ctx:         ctx,
 		messages:    messages,
