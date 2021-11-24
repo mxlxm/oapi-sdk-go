@@ -592,6 +592,24 @@ func (s *MessageReplyReqBody) MarshalJSON() ([]byte, error) {
 	return tools.MarshalJSON(raw, s.ForceSendFields)
 }
 
+type MessageCreateV4ReqBody struct {
+	OpenId          string      `json:"open_id,omitempty"`
+	UserId          string      `json:"user_id,omitempty"`
+	Email           string      `json:"email,omitempty"`
+	ChatId          string      `json:"chat_id,omitempty"`
+	MessageType     string      `json:"msg_type"`
+	Card            interface{} `json:"card"`
+	RootId          string      `json:"root_id,omitempty"`
+	UpdateMulti     bool        `json:"update_multi,omitempty"`
+	ForceSendFields []string    `json:"-"`
+}
+
+func (s *MessageCreateV4ReqBody) MarshalJSON() ([]byte, error) {
+	type cp MessageCreateV4ReqBody
+	raw := cp(*s)
+	return tools.MarshalJSON(raw, s.ForceSendFields)
+}
+
 type MessageCreateReqBody struct {
 	ReceiveId       string   `json:"receive_id,omitempty"`
 	Content         string   `json:"content,omitempty"`

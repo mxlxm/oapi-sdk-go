@@ -813,6 +813,33 @@ func (messages *MessageService) Reply(ctx *core.Context, body *MessageReplyReqBo
 	}
 }
 
+type MessageCreateV4ReqCall struct {
+	ctx         *core.Context
+	messages    *MessageService
+	body        *MessageCreateV4ReqBody
+	queryParams map[string]interface{}
+	optFns      []request.OptFn
+}
+
+func (rc *MessageCreateV4ReqCall) Do() (*Message, error) {
+	rc.optFns = append(rc.optFns, request.SetQueryParams(rc.queryParams))
+	var result = &Message{}
+	req := request.NewRequest("/open-apis/message/v4/send/", "POST",
+		[]request.AccessTokenType{request.AccessTokenTypeTenant}, rc.body, result, rc.optFns...)
+	err := api.Send(rc.ctx, rc.messages.service.conf, req)
+	return result, err
+}
+
+func (messages *MessageService) Create(ctx *core.Context, body *MessageCreateV4ReqBody, optFns ...request.OptFn) *MessageCreateV4ReqCall {
+	return &MessageCreateV4ReqCall{
+		ctx:         ctx,
+		messages:    messages,
+		body:        body,
+		queryParams: map[string]interface{}{},
+		optFns:      optFns,
+	}
+}
+
 type MessageCreateReqCall struct {
 	ctx         *core.Context
 	messages    *MessageService
