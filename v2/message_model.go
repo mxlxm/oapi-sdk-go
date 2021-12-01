@@ -530,7 +530,7 @@ func (m *MessageCardEmbedSelectMenuBase) IsAction() {
 
 func (m *MessageCardEmbedSelectMenuBase) IsExtra() {
 }
-func (m *MessageCardEmbedSelectMenuBase) Tag() {
+func (m *MessageCardEmbedSelectMenuBase) Tag() string {
 	return m.TagType
 }
 func (m *MessageCardEmbedSelectMenuBase) MarshalJSON() ([]byte, error) {
