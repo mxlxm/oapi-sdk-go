@@ -539,7 +539,7 @@ func (m *MessageCardEmbedSelectMenuStatic) Tag() string {
 }
 
 func (m *MessageCardEmbedSelectMenuStatic) MarshalJSON() ([]byte, error) {
-	return messageCardElementJson(m)
+	return messageCardElementJson(m.MessageCardEmbedSelectMenuBase)
 }
 
 type MessageCardEmbedSelectMenuPerson struct {
