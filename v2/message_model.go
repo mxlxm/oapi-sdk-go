@@ -516,11 +516,12 @@ func (m *MessageCardEmbedOverflow) IsExtra() {
 }
 
 type MessageCardEmbedSelectMenuBase struct {
+	TagType       string                          `json:"tag,omitempty"`
 	Placeholder   *MessageCardPlainText           `json:"placeholder,omitempty"`
 	InitialOption string                          `json:"initial_option,omitempty"`
 	Options       []*MessageCardEmbedSelectOption `json:"options,omitempty"`
 	Value         map[string]interface {
-	} `json:"value"`
+	} `json:"value,omitempty"`
 	Confirm *MessageCardActionConfirm `json:"confirm,omitempty"`
 }
 
@@ -528,6 +529,12 @@ func (m *MessageCardEmbedSelectMenuBase) IsAction() {
 }
 
 func (m *MessageCardEmbedSelectMenuBase) IsExtra() {
+}
+func (m *MessageCardEmbedSelectMenuBase) Tag() {
+	return m.TagType
+}
+func (m *MessageCardEmbedSelectMenuBase) MarshalJSON() ([]byte, error) {
+	return messageCardElementJson(m)
 }
 
 type MessageCardEmbedSelectMenuStatic struct {
