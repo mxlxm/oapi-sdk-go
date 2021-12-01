@@ -588,6 +588,7 @@ func (m *MessageCardAction) MarshalJSON() ([]byte, error) {
 
 type MessageCardConfig struct {
 	EnableForward  *bool `json:"enable_forward,omitempty"`
+	UpdateMulti    *bool `json:"update_multi,omitempty"`
 	WideScreenMode *bool `json:"wide_screen_mode,omitempty"`
 }
 
